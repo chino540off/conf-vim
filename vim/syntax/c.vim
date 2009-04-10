@@ -13,7 +13,7 @@ endif
 
 set comments=sl:/*,mb:**,ex:*/
 
-syn match	cError		"^.\{80,\}$"
+"syn match	cError		"^.\{80,\}$"
 
 if exists("c_gnu")
   syn keyword	cStatement	__asm__
@@ -85,7 +85,7 @@ if !exists("c_no_ansi") || exists("c_ansi_typedefs")
   syn match   cType		"\<mbstate_t\|wctrans_t\|wint_t\|wctype_t\>"
 endif
 if !exists("c_no_c99") " ISO C99
-  syn keyword	cType		bool complex
+  syn keyword	cType		bool complex inline
   syn keyword	cType		int8_t int16_t int32_t int64_t
   syn keyword	cType		uint8_t uint16_t uint32_t uint64_t
 syn keyword	cType		int_least8_t int_least16_t int_least32_t int_least64_t

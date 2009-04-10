@@ -49,7 +49,7 @@ set noerrorbells		" no beep
 "
 set showmatch			" show matching brackets
 set mat=5			" show matching brackets for 5 tenth of secs
-set nohlsearch			" no highlight for searched phrases
+"set nohlsearch			" no highlight for searched phrases
 set incsearch			" display matching pattern as typing
 set listchars=tab:\|\ ,trail:.,extends:>,precedes:<,eol:$ " :set list
 set so=5			" keep 10 lines for scope
@@ -67,6 +67,8 @@ set softtabstop=2
 set shiftwidth=2
 set nowrap
 set smarttab
+set fileencoding=utf8
+set encoding=utf8
 
 "
 " Folding
@@ -179,25 +181,40 @@ function MakefileNew()
   endif
 endfun
 
-au BufNewFile,BufRead *.doxygen setfiletype doxygen
-
-nnoremap <F8> :TlistOpen<CR>
-
-nnoremap <F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+map <F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 let OmniCpp_NamespaceSearch = 2
 let OmniCpp_ShowPrototypeInAbbr = 1
 let OmniCpp_DefaultNamespaces = ["std"]
 let OmniCpp_MayCompleteScope = 1
 let OmniCpp_SelectFirstItem = 2
-set tags+=~/conf/tags/stl.tags
+let tagfiles = glob("`find ~/conf/tags -iname \"*.tags\" -print`")
+let &tags = substitute(tagfiles, "\n", ",", "g")
 
-"nmap <F5> I// <Space><Esc>j^
-"nmap <F6> ^4xj
+""nmap <F5> I// <Space><Esc>j^
+""nmap <F6> ^4xj
+"
 
+" Manipulate buffers
+nmap <silent> <unique> <SPACE>o :BufExplorer<CR>
 
+" Move into splits
+map <SPACE><up> <C-w><up>
+map <SPACE><down> <C-w><down>
+map <SPACE><right> <C-w><right>
+map <SPACE><left> <C-w><left>
+
+" Spell Mapping
 let spell_auto_type = "txt,tex,mail,html,sgml,cvs,none"
 let spell_executable = "aspell"
 let spell_language_list = "french,english"
 set mousemodel=popup_setpos
 highlight SpellErrors ctermfg=Blue guifg=Blue cterm=underline gui=underline term=reverse
-"let loaded_vimspell = 1
+map <F2> :SpellCheck<CR>
+map <F3> :SpellProposeAlternatives<CR>
+
+" Doxygen Mapping
+map <SPACE>d :Dox<CR>
+
+" Tags Support
+map <SPACE>t :TlistOpen<CR>
+
