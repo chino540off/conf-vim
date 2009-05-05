@@ -53,7 +53,7 @@ hi lCursor	guifg=#ffffff guibg=#000000 ctermfg=bg ctermbg=darkgreen
   " Comments
 hi Comment	ctermfg=43		cterm=bold
   " Class
-hi Class	ctermfg=4	cterm=bold
+hi Class	ctermfg=4		cterm=bold
   " Constants
 hi Constant	ctermfg=70		cterm=none
   " Identifiers
