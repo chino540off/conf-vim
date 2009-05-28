@@ -204,7 +204,7 @@ map <SPACE><right> <C-w><right>
 map <SPACE><left> <C-w><left>
 
 " Spell Mapping
-let spell_auto_type = "txt,tex,mail,html,sgml,cvs,none"
+let spell_auto_type = "todo,txt,tex,mail,html,sgml,cvs,none"
 let spell_executable = "aspell"
 let spell_language_list = "french,english"
 set mousemodel=popup_setpos
