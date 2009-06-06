@@ -203,14 +203,19 @@ map <SPACE><down> <C-w><down>
 map <SPACE><right> <C-w><right>
 map <SPACE><left> <C-w><left>
 
+" Menu
+set mousemodel=popup
+set wildmenu
+
 " Spell Mapping
-let spell_auto_type = "todo,txt,tex,mail,html,sgml,cvs,none"
-let spell_executable = "aspell"
-let spell_language_list = "french,english"
-set mousemodel=popup_setpos
-highlight SpellErrors ctermfg=Blue guifg=Blue cterm=underline gui=underline term=reverse
-map <F2> :SpellCheck<CR>
-map <F3> :SpellProposeAlternatives<CR>
+map <F2> :setlocal spell spelllang=fr<CR>
+map <F4> :setlocal spell spelllang=en_us<CR>
+map <F3> z=
+
+hi SpellBad ctermfg=Blue  ctermbg=none guifg=Blue cterm=underline gui=underline term=reverse
+hi SpellCap ctermfg=Green  ctermbg=none guifg=Blue cterm=underline gui=underline term=reverse
+hi SpellRare ctermfg=Yellow  ctermbg=none guifg=Blue cterm=underline gui=underline term=reverse
+hi SpellLocal ctermfg=Red  ctermbg=none guifg=Blue cterm=underline gui=underline term=reverse
 
 " Doxygen Mapping
 map <SPACE>d :Dox<CR>
