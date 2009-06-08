@@ -16,7 +16,7 @@ endif
 
 set comments=sl:/*,mb:**,ex:*/
 
-syn match	cError		"^.\{80,\}$"
+"syn match	cError		"^.\{80,\}$"
 
 if exists("c_gnu")
   syn keyword	cStatement	__asm__
