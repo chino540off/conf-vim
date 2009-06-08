@@ -1,7 +1,8 @@
 "
 " Vars
 "
-let login_epita = "detour_o"	" login epita
+let my_name = "Olivier Detour"			" name 
+let my_email = "detour.olivier@gmail.com"	" email
 
 "
 " General
@@ -16,7 +17,7 @@ set cf				" enable error files and erro jumping
 " Theme
 "
 syntax on			" enable syntax highlighting
-colorscheme snp			" theme: snp
+colorscheme chino		" theme: chino
 
 "
 " Backup
@@ -123,7 +124,8 @@ function Replace(cs, cm, ce)
   execute "% s,@LARGE-FILE-NAME@," . substitute(toupper(expand('%:t')), "\\.", "_", "g") . ",ge"
   execute "% s,@PART@," . expand("%:p:h:t") . ",ge"
   execute "% s,@PROJECT@," . expand("%:p:h:t") . ",ge"
-  execute "% s,@USER-LOGIN@," . g:login_epita . ",ge"
+  execute "% s,@USER-LOGIN@," . g:my_name . ",ge"
+  execute "% s,@EMAIL@," . g:my_email . ",ge"
 endfun
 
 function HeaderCNew()
@@ -208,14 +210,35 @@ set mousemodel=popup
 set wildmenu
 
 " Spell Mapping
-map <F2> :setlocal spell spelllang=fr<CR>
-map <F4> :setlocal spell spelllang=en_us<CR>
+let SpellActivity = "off"
+
+function ChangeSpellActivity()
+  if (g:SpellActivity == "off")
+    " change to french spelling
+    let g:SpellActivity = "fr"
+    setlocal spell spelllang=fr
+    echo "Spelling on in French"
+  elseif (g:SpellActivity == "fr")
+    " change to english us spelling
+    let g:SpellActivity = "us"
+    setlocal spell spelllang=en_us
+    echo "Spelling on in English"
+  else
+    " switch off spelling
+    let g:SpellActivity = "off"
+    setlocal nospell
+    echo "Spelling off"
+  endif
+endfunction
+
+set spellsuggest=8
+map <F2> :call ChangeSpellActivity()<CR>
 map <F3> z=
 
-hi SpellBad ctermfg=Blue  ctermbg=none guifg=Blue cterm=underline gui=underline term=reverse
-hi SpellCap ctermfg=Green  ctermbg=none guifg=Blue cterm=underline gui=underline term=reverse
-hi SpellRare ctermfg=Yellow  ctermbg=none guifg=Blue cterm=underline gui=underline term=reverse
-hi SpellLocal ctermfg=Red  ctermbg=none guifg=Blue cterm=underline gui=underline term=reverse
+hi SpellBad ctermbg=Blue  ctermfg=Black guifg=Blue cterm=underline gui=underline term=reverse
+hi SpellCap ctermbg=Green  ctermfg=Black guifg=Blue cterm=underline gui=underline term=reverse
+hi SpellRare ctermbg=Yellow  ctermfg=Black guifg=Blue cterm=underline gui=underline term=reverse
+hi SpellLocal ctermbg=Red  ctermfg=Black guifg=Blue cterm=underline gui=underline term=reverse
 
 " Doxygen Mapping
 map <SPACE>d :Dox<CR>
