@@ -171,7 +171,7 @@ function HeaderUpdate()
   let linenb = line(".")
   let n = search('Last update')
   if (n > 0) && (n< 10)
-    execute "1,10 s,\\(Last update \\).*,\\1" . strftime("%c") . " " . g:login_epita . ","
+    execute "1,10 s,\\(Last update \\).*,\\1" . strftime("%c") . " " . g:my_name . ","
   endif
   execute ":" . linenb
 endfun
@@ -189,7 +189,7 @@ let OmniCpp_ShowPrototypeInAbbr = 1
 let OmniCpp_DefaultNamespaces = ["std"]
 let OmniCpp_MayCompleteScope = 1
 let OmniCpp_SelectFirstItem = 2
-let tagfiles = glob("`find ~/conf/tags -iname \"*.tags\" -print`")
+let tagfiles = glob("`find ~/conf/tags . -iname \"*tags\" -print`")
 let &tags = substitute(tagfiles, "\n", ",", "g")
 
 ""nmap <F5> I// <Space><Esc>j^
