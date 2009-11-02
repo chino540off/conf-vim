@@ -189,8 +189,8 @@ let OmniCpp_ShowPrototypeInAbbr = 1
 let OmniCpp_DefaultNamespaces = ["std"]
 let OmniCpp_MayCompleteScope = 1
 let OmniCpp_SelectFirstItem = 2
-let tagfiles = glob("`find ~/conf/tags . -iname \"*tags\" -print`")
-let &tags = substitute(tagfiles, "\n", ",", "g")
+"let tagfiles = glob("`find ~/conf/tags . -iname \"*tags\" -print`")
+"let &tags = substitute(tagfiles, "\n", ",", "g")
 
 ""nmap <F5> I// <Space><Esc>j^
 ""nmap <F6> ^4xj
