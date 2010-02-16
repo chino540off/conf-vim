@@ -32,13 +32,15 @@ set makeef=error.err		" error files
 "
 set lsp=0
 set wildmenu			" display list for completion mode
+set wildchar=<Tab>
+set wildmode=longest,list
+
 set ruler			" display cursor position
 set cmdheight=2			" command line uses 2 screen line
 set number			" display line numbers
 set lz				" do not redraw while running macro
 set showcmd			" display the current command
 set backspace=indent,eol,start	" enable a nice backspace
-set wildchar=<Tab>
 set whichwrap=<,>,[,],b,s,h,l	" enable keys to move cursor
 set mouse=a			" enable mouse uses everywhere
 set shortmess=atI		" shortens messages
@@ -276,8 +278,22 @@ hi SpellRare ctermbg=Yellow  ctermfg=Black guifg=Blue cterm=underline gui=underl
 hi SpellLocal ctermbg=Red  ctermfg=Black guifg=Blue cterm=underline gui=underline term=reverse
 
 " Doxygen Mapping
-map <SPACE>d :Dox<CR>
+map <SPACE>D :Dox<CR>
 
 " Tags Support
-map <SPACE>t :TlistOpen<CR>
+"map <SPACE>t :TlistOpen<CR>
+
+" Cscope finding
+if filereadable("cscope.out")
+  cs add cscope.out
+endif
+
+nmap <Space>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <Space>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <Space>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <Space>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <Space>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <Space>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <Space>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <Space>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
