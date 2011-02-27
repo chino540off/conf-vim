@@ -32,13 +32,15 @@ set makeef=error.err		" error files
 "
 set lsp=0
 set wildmenu			" display list for completion mode
+set wildchar=<Tab>
+set wildmode=longest,list
+
 set ruler			" display cursor position
 set cmdheight=2			" command line uses 2 screen line
 set number			" display line numbers
 set lz				" do not redraw while running macro
 set showcmd			" display the current command
 set backspace=indent,eol,start	" enable a nice backspace
-set wildchar=<Tab>
 set whichwrap=<,>,[,],b,s,h,l	" enable keys to move cursor
 set mouse=a			" enable mouse uses everywhere
 set shortmess=atI		" shortens messages
@@ -192,6 +194,41 @@ let OmniCpp_SelectFirstItem = 2
 "let tagfiles = glob("`find ~/conf/tags . -iname \"*tags\" -print`")
 "let &tags = substitute(tagfiles, "\n", ",", "g")
 
+" Use neocomplcache.
+let g:NeoComplCache_EnableAtStartup = 1
+" Use smartcase.
+let g:NeoComplCache_SmartCase = 1
+" Use preview window.
+let g:NeoComplCache_EnableInfo = 1
+" Use camel case completion.
+let g:NeoComplCache_EnableCamelCaseCompletion = 1
+" Use underbar completion.
+let g:NeoComplCache_EnableUnderbarCompletion = 1
+" Set minimum syntax keyword length.
+let g:NeoComplCache_MinSyntaxLength = 3
+" Set skip input time.
+let g:NeoComplCache_SkipInputTime = '0.1'
+
+" Define dictionary.
+let g:NeoComplCache_DictionaryFileTypeLists = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scheme' : $HOME.'/.gosh_completions'
+        \ }
+
+" Define keyword.
+if !exists('g:NeoComplCache_KeywordPatterns')
+    let g:NeoComplCache_KeywordPatterns = {}
+endif
+let g:NeoComplCache_KeywordPatterns['default'] = '\v\h\w*'
+
+" Plugin key-mappings.
+imap <silent><C-l>     <Plug>(neocomplcache_snippets_expand)
+smap <silent><C-l>     <Plug>(neocomplcache_snippets_expand)
+inoremap <expr><C-h> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
+inoremap <expr><silent><C-g>     neocomplcache#undo_completion()
+
+
 ""nmap <F5> I// <Space><Esc>j^
 ""nmap <F6> ^4xj
 "
@@ -241,10 +278,24 @@ hi SpellRare ctermbg=Yellow  ctermfg=Black guifg=Blue cterm=underline gui=underl
 hi SpellLocal ctermbg=Red  ctermfg=Black guifg=Blue cterm=underline gui=underline term=reverse
 
 " Doxygen Mapping
-map <SPACE>d :Dox<CR>
+map <SPACE>D :Dox<CR>
 
 " Tags Support
-map <SPACE>t :TlistOpen<CR>
+"map <SPACE>t :TlistOpen<CR>
+
+" Cscope finding
+if filereadable("cscope.out")
+  cs add cscope.out
+endif
+
+nmap <Space>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <Space>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <Space>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <Space>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <Space>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <Space>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <Space>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <Space>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
 " 80 Columns
 "au BufWinEnter * let w:m1=matchadd('Search', '\%<81v.\%>77v', -1)
