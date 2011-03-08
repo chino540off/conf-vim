@@ -185,42 +185,42 @@ function MakefileNew()
   endif
 endfun
 
-map <F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-let OmniCpp_NamespaceSearch = 2
-let OmniCpp_ShowPrototypeInAbbr = 1
-let OmniCpp_DefaultNamespaces = ["std"]
-let OmniCpp_MayCompleteScope = 1
-let OmniCpp_SelectFirstItem = 2
+"map <F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+"let OmniCpp_NamespaceSearch = 2
+"let OmniCpp_ShowPrototypeInAbbr = 1
+"let OmniCpp_DefaultNamespaces = ["std"]
+"let OmniCpp_MayCompleteScope = 1
+"let OmniCpp_SelectFirstItem = 2
 "let tagfiles = glob("`find ~/conf/tags . -iname \"*tags\" -print`")
 "let &tags = substitute(tagfiles, "\n", ",", "g")
 
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
 " Use neocomplcache.
-let g:NeoComplCache_EnableAtStartup = 1
+let g:neocomplcache_enable_at_startup = 1
 " Use smartcase.
-let g:NeoComplCache_SmartCase = 1
-" Use preview window.
-let g:NeoComplCache_EnableInfo = 1
+let g:neocomplcache_enable_smart_case = 1
 " Use camel case completion.
-let g:NeoComplCache_EnableCamelCaseCompletion = 1
+let g:neocomplcache_enable_camel_case_completion = 1
 " Use underbar completion.
-let g:NeoComplCache_EnableUnderbarCompletion = 1
+let g:neocomplcache_enable_underbar_completion = 1
 " Set minimum syntax keyword length.
-let g:NeoComplCache_MinSyntaxLength = 3
-" Set skip input time.
-let g:NeoComplCache_SkipInputTime = '0.1'
-
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+	
 " Define dictionary.
-let g:NeoComplCache_DictionaryFileTypeLists = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
+let g:neocomplcache_dictionary_filetype_lists = {
+  \ 'default' : '',
+  \ 'vimshell' : $HOME.'/.vimshell_hist',
+  \ 'scheme' : $HOME.'/.gosh_completions'
+    \ }
 
 " Define keyword.
-if !exists('g:NeoComplCache_KeywordPatterns')
-    let g:NeoComplCache_KeywordPatterns = {}
+if !exists('g:neocomplcache_keyword_patterns')
+  let g:neocomplcache_keyword_patterns = {}
 endif
-let g:NeoComplCache_KeywordPatterns['default'] = '\v\h\w*'
+let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+	
 
 " Plugin key-mappings.
 imap <silent><C-l>     <Plug>(neocomplcache_snippets_expand)
