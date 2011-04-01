@@ -298,6 +298,5 @@ nmap <Space>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <Space>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap <Space>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
-
 let g:CCTreeKeyTraceForwardTree = '<Space>F'
 let g:CCTreeKeyTraceReverseTree = '<Space>R' 
