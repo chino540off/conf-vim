@@ -57,6 +57,17 @@ set incsearch			" display matching pattern as typing
 set listchars=tab:\|\ ,trail:.,extends:>,precedes:<,eol:$ " :set list
 set so=5			" keep 10 lines for scope
 set novisualbell		" do not blink
+if has("gui_running")
+    set guioptions-=m		" no menu bar
+    set guioptions-=T		" no toolbar
+    set guioptions-=r		" no right-hand scrollbar
+    set guioptions-=L		" no left-hand scrollbar
+    set hlsearch		" highlight search matches
+    colorscheme molokai   	" set colorscheme
+else				" terminal configuration
+    set t_Co=16			" Use 8 colors
+    colorscheme molokai   	" set colorscheme
+endif
 
 "
 " Text formatting
