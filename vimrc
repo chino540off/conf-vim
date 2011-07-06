@@ -83,6 +83,7 @@ set nowrap
 set smarttab
 set fileencoding=utf8
 set encoding=utf8
+set gfn=Mono\ 9
 
 "
 " Folding
