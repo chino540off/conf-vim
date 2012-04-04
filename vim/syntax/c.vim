@@ -101,7 +101,7 @@ endif
 
 "syn keyword	cStructure	struct union enum typedef
 syn match	cTypedef	display "\<t_[a-z][a-z0-9_]*\>"
-syn keyword	cStorageClass	static register auto volatile extern const
+syn keyword	cStorageClass	static register auto volatile extern const restrict
 
 syn keyword	cEnum		enum struct union
 syn match	cEnum		display "\<e_[a-z][a-z0-9_]*\>"
