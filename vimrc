@@ -77,8 +77,8 @@ set autoindent			" autoindent
 set smartindent			" smartindent
 set cindent			" c-style indenting
 set tabstop=8
-set softtabstop=2
-set shiftwidth=2
+set softtabstop=8
+set shiftwidth=8
 set nowrap
 set smarttab
 set fileencoding=utf8
