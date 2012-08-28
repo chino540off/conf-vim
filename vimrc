@@ -298,7 +298,6 @@ map <SPACE>D :Dox<CR>
 " Cscope finding
 if filereadable("cscope.out")
   cs add cscope.out
-  autocmd VimEnter * CCTreeLoadDB cscope.out
 endif
 
 nmap <Space>s :cs find s <C-R>=expand("<cword>")<CR><CR>
@@ -309,6 +308,3 @@ nmap <Space>e :cs find e <C-R>=expand("<cword>")<CR><CR>
 nmap <Space>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <Space>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap <Space>d :cs find d <C-R>=expand("<cword>")<CR><CR>
-
-let g:CCTreeKeyTraceForwardTree = '<Space>F'
-let g:CCTreeKeyTraceReverseTree = '<Space>R' 
