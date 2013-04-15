@@ -54,7 +54,7 @@ set showmatch			" show matching brackets
 set mat=5			" show matching brackets for 5 tenth of secs
 "set nohlsearch			" no highlight for searched phrases
 set incsearch			" display matching pattern as typing
-set listchars=tab:\|\ ,trail:.,extends:>,precedes:<,eol:$ " :set list
+set listchars=tab:\|\ ,trail:.,extends:>,precedes:<,eol:$	" :set list
 set so=5			" keep 10 lines for scope
 set novisualbell		" do not blink
 if has("gui_running")
@@ -134,7 +134,7 @@ function Replace(cs, cm, ce)
   execute "% s,@CE@," . a:ce . ",ge"
   execute "% s,@DATE-STAMP@," . strftime("%c") . ",ge"
   execute "% s,@FILE-NAME@," . expand('%:t') . ",ge"
-  execute "% s,@FILE-HEADER@," . substitute(substitute(expand('%:t'), "\\.c", "\\.h", "g"), "\\.hc", "\\.hh", "g") . ",ge" 
+  execute "% s,@FILE-HEADER@," . substitute(substitute(expand('%:t'), "\\.c", "\\.h", "g"), "\\.hc", "\\.hh", "g") . ",ge"
   execute "% s,@LARGE-FILE-NAME@," . substitute(toupper(expand('%:t')), "\\.", "_", "g") . ",ge"
   execute "% s,@PART@," . expand("%:p:h:t") . ",ge"
   execute "% s,@PROJECT@," . expand("%:p:h:t") . ",ge"
@@ -181,69 +181,12 @@ function HeaderWWWNew()
   endif
 endfun
 
-function HeaderUpdate()
-  let linenb = line(".")
-  let n = search('Last update')
-  if (n > 0) && (n< 10)
-    execute "1,10 s,\\(Last update \\).*,\\1" . strftime("%c") . " " . g:my_name . ","
-  endif
-  execute ":" . linenb
-endfun
-
 function MakefileNew()
   let makefile = confirm("Use default makefile?", "&None\n&Default")
   if makefile == 2
     0r ~/.vim/skel/Makefile.tpl
   endif
 endfun
-
-"map <F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-"let OmniCpp_NamespaceSearch = 2
-"let OmniCpp_ShowPrototypeInAbbr = 1
-"let OmniCpp_DefaultNamespaces = ["std"]
-"let OmniCpp_MayCompleteScope = 1
-"let OmniCpp_SelectFirstItem = 2
-"let tagfiles = glob("`find ~/conf/tags . -iname \"*tags\" -print`")
-"let &tags = substitute(tagfiles, "\n", ",", "g")
-
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplcache.
-let g:neocomplcache_enable_at_startup = 1
-" Use smartcase.
-let g:neocomplcache_enable_smart_case = 1
-" Use camel case completion.
-let g:neocomplcache_enable_camel_case_completion = 1
-" Use underbar completion.
-let g:neocomplcache_enable_underbar_completion = 1
-" Set minimum syntax keyword length.
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-	
-" Define dictionary.
-let g:neocomplcache_dictionary_filetype_lists = {
-  \ 'default' : '',
-  \ 'vimshell' : $HOME.'/.vimshell_hist',
-  \ 'scheme' : $HOME.'/.gosh_completions'
-    \ }
-
-" Define keyword.
-if !exists('g:neocomplcache_keyword_patterns')
-  let g:neocomplcache_keyword_patterns = {}
-endif
-let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-	
-
-" Plugin key-mappings.
-imap <silent><C-l>     <Plug>(neocomplcache_snippets_expand)
-smap <silent><C-l>     <Plug>(neocomplcache_snippets_expand)
-inoremap <expr><C-h> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
-inoremap <expr><silent><C-g>     neocomplcache#undo_completion()
-
-
-""nmap <F5> I// <Space><Esc>j^
-""nmap <F6> ^4xj
-"
 
 " Manipulate buffers
 nmap <silent> <unique> <SPACE>o :BufExplorer<CR>
@@ -292,13 +235,9 @@ hi SpellLocal ctermbg=Red  ctermfg=Black guifg=Blue cterm=underline gui=underlin
 " Doxygen Mapping
 map <SPACE>D :Dox<CR>
 
-" Tags Support
-"map <SPACE>t :TlistOpen<CR>
-
 " Cscope finding
 if filereadable("cscope.out")
   cs add cscope.out
-  autocmd VimEnter * CCTreeLoadDB cscope.out
 endif
 
 nmap <Space>s :cs find s <C-R>=expand("<cword>")<CR><CR>
@@ -310,5 +249,15 @@ nmap <Space>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <Space>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap <Space>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
-let g:CCTreeKeyTraceForwardTree = '<Space>F'
-let g:CCTreeKeyTraceReverseTree = '<Space>R' 
+set nocompatible               " be iMproved
+filetype off                   " required!
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+filetype plugin indent on     " required!
+
+Bundle 'Valloric/YouCompleteMe'
