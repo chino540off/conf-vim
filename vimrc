@@ -254,4 +254,9 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 filetype plugin indent on							" required!
 
+" C/C++/C#/Objective-C/Objective-C++ Completion
 Bundle 'Valloric/YouCompleteMe'
+" Awesome Git plugin
+Bundle 'tpope/vim-fugitive'
+" Python Completion
+Bundle 'davidhalter/jedi'
