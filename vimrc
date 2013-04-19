@@ -209,6 +209,7 @@ hi SpellLocal	ctermbg=Red	ctermfg=Black guifg=Blue cterm=underline gui=underline
 
 " Doxygen Mapping
 map <SPACE>D :Dox<CR>
+let g:load_doxygen_syntax=1
 
 " Cscope finding
 if filereadable("cscope.out")
@@ -234,6 +235,8 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 " C/C++/C#/Objective-C/Objective-C++ Completion
 Bundle 'Valloric/YouCompleteMe'
+let g:ycm_key_list_select_completion = ['<Enter>', '<Down>']
+
 " Awesome Git plugin
 Bundle 'tpope/vim-fugitive'
 
