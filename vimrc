@@ -117,17 +117,16 @@ endif
 aug coding
 	au!
 
-	au BufNewFile	{M,m}akefile		call MakefileNew()
-	au BufNewFile	*.c{,c,++,pp,xx}	call HeaderCNew()
-	"au BufWritePre	*.c{,c,++,pp,xx}	call HeaderUpdate()
-	au BufNewFile	*.h{,h,++,pp,xx}	call HeaderHNew()
-	"au BufWritePre  *.h{,h,++,pp,xx}	call HeaderUpdate()
-	au BufNewFile	index.{html,php}	call HeaderWWWNew()
+	au BufNewFile	{M,m}akefile		call HeaderNew("Makefile",	'###',  '##', '##', '###')
+	au BufNewFile	*.c{,c,++,pp,xx}	call HeaderNew("c",		'/**',  ' *', '**', ' */')
+	au BufNewFile	*.h{,h,++,pp,xx}	call HeaderNew('h',		'/**',  ' *', '**', ' */')
+	au BufNewFile	index.{html,php}	call HeaderNew('index',		'<!--', '--', '--', '-->')
 aug END
 
-function Replace(cs, cm, ce)
+function Replace(cs, cm, cd, ce)
 	execute "% s,@CS@," . a:cs . ",ge"
 	execute "% s,@CM@," . a:cm . ",ge"
+	execute "% s,@CD@," . a:cd . ",ge"
 	execute "% s,@CE@," . a:ce . ",ge"
 	execute "% s,@DATE-STAMP@," . strftime("%c") . ",ge"
 	execute "% s,@FILE-NAME@," . expand('%:t') . ",ge"
@@ -139,32 +138,21 @@ function Replace(cs, cm, ce)
 	execute "% s,@EMAIL@," . g:my_email . ",ge"
 endfun
 
-function HeaderCNew()
-	let header = confirm("Add header?", "&None\n&Epita\n&Default")
+function HeaderNew(type, cs, cm, cd, ce)
+	let header = confirm("Add header?", "&None\n&Thales\n&Epita\n&Default")
 	if header == 2
-		0r ~/.vim/skel/epita.tpl
-		9r ~/.vim/skel/c.tpl
+		exec "0r ~/.vim/skel/thales.tpl"
+		exec "22r ~/.vim/skel/" . a:type . ".tpl"
 	endif
 	if header == 3
-		0r ~/.vim/skel/c.tpl
+		exec "0r ~/.vim/skel/epita.tpl"
+		exec "10r ~/.vim/skel/" . a:type. ".tpl"
+	endif
+	if header == 4
+		exec "0r ~/.vim/skel/" . a:type. ".tpl"
 	endif
 	if header >= 2
-		call Replace('/*', '**', '*/')
-		normal 2G3W
-	endif
-endfun
-
-function HeaderHNew()
-	let header = confirm("Add header?", "&None\n&Epita\n&Default")
-	if header == 2
-		0r ~/.vim/skel/epita.tpl
-		9r ~/.vim/skel/h.tpl
-	endif
-	if header == 3
-		0r ~/.vim/skel/h.tpl
-	endif
-	if header >= 2
-		call Replace('/*', '**', '*/')
+		call Replace(a:cs, a:cm, a:cd, a:ce)
 		normal 2G3W
 	endif
 endfun
@@ -173,15 +161,8 @@ function HeaderWWWNew()
 	let header = confirm("Use default structure?", "&Yes\n&No")
 	if header == 1
 		0r ~/.vim/skel/index.tpl
-		call Replace('/*', '**', '*/')
+		call Replace('<!--', ' -', '--', ' -->')
 		normal 2G3W
-	endif
-endfun
-
-function MakefileNew()
-	let makefile = confirm("Use default makefile?", "&None\n&Default")
-	if makefile == 2
-		0r ~/.vim/skel/Makefile.tpl
 	endif
 endfun
 
