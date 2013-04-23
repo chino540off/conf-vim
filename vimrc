@@ -240,5 +240,7 @@ let g:ycm_key_list_select_completion = ['<Enter>', '<Down>']
 " Awesome Git plugin
 Bundle 'tpope/vim-fugitive'
 
+" Awesome Git plugin
+Bundle 'mfukar/robotframework-vim'
 
 filetype plugin indent on							" required!
