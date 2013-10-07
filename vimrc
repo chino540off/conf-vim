@@ -243,4 +243,7 @@ Bundle 'tpope/vim-fugitive'
 " Awesome Git plugin
 Bundle 'mfukar/robotframework-vim'
 
+" Ardiuno Synthax
+Bundle 'sudar/vim-arduino-syntax'
+
 filetype plugin indent on							" required!
