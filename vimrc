@@ -247,6 +247,9 @@ Bundle 'tpope/vim-fugitive'
 " Robotframework 
 Bundle 'mfukar/robotframework-vim'
 
+" Ardiuno Synthax
+Bundle 'sudar/vim-arduino-syntax'
+
 " SnipMate
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
