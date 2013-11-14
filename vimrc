@@ -237,6 +237,9 @@ Bundle 'gmarik/vundle'
 " C/C++/C#/Objective-C/Objective-C++ Completion
 Bundle 'Valloric/YouCompleteMe'
 let g:ycm_key_list_select_completion = ['<Enter>', '<Down>']
+" Remove preview window
+set completeopt-=preview
+let g:ycm_add_preview_to_completeopt=0
 
 " Awesome Git plugin
 Bundle 'tpope/vim-fugitive'
