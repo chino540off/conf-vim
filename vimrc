@@ -233,6 +233,7 @@ call vundle#rc()
 
 " required!: let Vundle manage Vundle
 Bundle 'gmarik/vundle'
+
 " C/C++/C#/Objective-C/Objective-C++ Completion
 Bundle 'Valloric/YouCompleteMe'
 let g:ycm_key_list_select_completion = ['<Enter>', '<Down>']
@@ -240,7 +241,17 @@ let g:ycm_key_list_select_completion = ['<Enter>', '<Down>']
 " Awesome Git plugin
 Bundle 'tpope/vim-fugitive'
 
-" Awesome Git plugin
+" Robotframework 
 Bundle 'mfukar/robotframework-vim'
+
+" SnipMate
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle "garbas/vim-snipmate"
+Bundle "honza/vim-snippets"
+"imap <C-J>	<Plug>snipMateNextOrTrigger
+
+" Syntastic
+Bundle "scrooloose/syntastic"
 
 filetype plugin indent on							" required!
