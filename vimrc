@@ -14,12 +14,6 @@ set history=500							" history
 set cf								" enable error files and erro jumping
 
 "
-" Theme
-"
-syntax on							" enable syntax highlighting
-colorscheme chino						" theme: chino
-
-"
 " Backup
 "
 set backup							" enable backup
@@ -50,6 +44,7 @@ set noerrorbells						" no beep
 "
 " Visual
 "
+syntax on							" enable syntax highlighting
 set showmatch							" show matching brackets
 set mat=5							" show matching brackets for 5 tenth of secs
 "set nohlsearch							" no highlight for searched phrases
@@ -117,7 +112,7 @@ endif
 aug coding
 	au!
 
-	au BufNewFile	{M,m}akefile		call HeaderNew("Makefile",	'###',  '##', '##', '###')
+	au BufNewFile	{M,m}akefile		call MakefileNew(		'###',  '##', '##', '###')
 	au BufNewFile	*.c{,c,++,pp,xx}	call HeaderNew("c",		'/**',  ' *', '**', ' */')
 	au BufNewFile	*.h{,h,++,pp,xx}	call HeaderNew('h',		'/**',  ' *', '**', ' */')
 	au BufNewFile	index.{html,php}	call HeaderNew('index',		'<!--', '--', '--', '-->')
@@ -140,6 +135,7 @@ endfun
 
 function HeaderNew(type, cs, cm, cd, ce)
 	let header = confirm("Add header?", "&None\n&Thales\n&Epita\n&Default")
+
 	if header == 2
 		exec "0r ~/.vim/skel/thales.tpl"
 		exec "22r ~/.vim/skel/" . a:type . ".tpl"
@@ -157,10 +153,21 @@ function HeaderNew(type, cs, cm, cd, ce)
 	endif
 endfun
 
+function MakefileNew(cs, cm, cd, ce)
+	let type = confirm("Which Makefile?", "&None\n&User\n&Kernel")
+
+	if type == 2
+	       call HeaderNew('uMakefile', a:cs, a:cm, a:cd, a:ce)
+	endif
+	if type == 3
+	       call HeaderNew('kMakefile', a:cs, a:cm, a:cd, a:ce)
+	endif
+endfun
+
 function HeaderWWWNew()
 	let header = confirm("Use default structure?", "&Yes\n&No")
 	if header == 1
-		0r ~/.vim/skel/index.tpl
+		exec "0r ~/.vim/skel/index.tpl"
 		call Replace('<!--', ' -', '--', ' -->')
 		normal 2G3W
 	endif
