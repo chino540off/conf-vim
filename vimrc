@@ -267,4 +267,15 @@ Bundle "honza/vim-snippets"
 " Syntastic
 Bundle "scrooloose/syntastic"
 
+" PlantUML syntax
+Bundle "aklt/plantuml-syntax"
+
+" Groovy syntax
+Bundle "vim-scripts/groovy.vim"
+
+" Notes
+Bundle "xolox/vim-misc"
+Bundle "xolox/vim-notes"
+let g:notes_directories = [ '~/work/notes' ]
+
 filetype plugin indent on							" required!
