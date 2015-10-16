@@ -60,7 +60,7 @@ if has("gui_running")
 	set hlsearch						" highlight search matches
 	colorscheme molokai					" set colorscheme
 else								" terminal configuration
-	set t_Co=16						" Use 8 colors
+	set t_Co=32						" Use 8 colors
 	colorscheme molokai   					" set colorscheme
 endif
 
@@ -71,14 +71,14 @@ set fo=tcrqn
 set autoindent							" autoindent
 set smartindent							" smartindent
 set cindent							" c-style indenting
-set tabstop=8
-set softtabstop=8
-set shiftwidth=8
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 set nowrap
 set smarttab
 set fileencoding=utf8
 set encoding=utf8
-set gfn=Mono\ 9
+set gfn=Mono\ 10
 
 "
 " Folding
@@ -273,9 +273,36 @@ Bundle "aklt/plantuml-syntax"
 " Groovy syntax
 Bundle "vim-scripts/groovy.vim"
 
+Bundle "justinmk/vim-syntax-extra"
+
 " Notes
 Bundle "xolox/vim-misc"
 Bundle "xolox/vim-notes"
 let g:notes_directories = [ '~/work/notes' ]
+
+Bundle "bling/vim-airline"
+set laststatus=2
+" air-line
+let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
+
+let g:airline_theme='molokai'
 
 filetype plugin indent on							" required!

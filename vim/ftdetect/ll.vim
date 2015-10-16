@@ -10,6 +10,7 @@
 
 "" Override filetype for ll files (ViM normally detects them as LIFELINE
 "" files) and for lex filetype
-au BufRead,BufNewFile *.ll		set filetype=cpp
-au BufRead,BufNewFile *.l		set filetype=cpp
-au BufRead,BufNewFile *.yy		set filetype=cpp
+au BufRead,BufNewFile *.ll		set filetype=lex
+au BufRead,BufNewFile *.l		set filetype=lex
+au BufRead,BufNewFile *.yy		set filetype=yacc
+au BufRead,BufNewFile *.y		set filetype=yacc
