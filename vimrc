@@ -179,9 +179,6 @@ function HeaderWWWNew()
 	endif
 endfun
 
-" Manipulate buffers
-nmap <silent> <unique> <SPACE>o :BufExplorer<CR>
-
 " Move into splits
 map <SPACE><up> <C-w><up>
 map <SPACE><down> <C-w><down>
@@ -220,10 +217,6 @@ hi SpellCap	ctermbg=Green	ctermfg=Black guifg=Blue cterm=underline gui=underline
 hi SpellRare	ctermbg=Yellow	ctermfg=Black guifg=Blue cterm=underline gui=underline term=reverse
 hi SpellLocal	ctermbg=Red	ctermfg=Black guifg=Blue cterm=underline gui=underline term=reverse
 
-" Doxygen Mapping
-map <SPACE>D :Dox<CR>
-let g:load_doxygen_syntax=1
-
 set nocompatible								" be iMproved
 filetype off									" required!
 
@@ -241,6 +234,15 @@ set completeopt-=preview
 let g:ycm_add_preview_to_completeopt=0
 
 nmap <Space>d :YcmCompleter GoTo<CR><CR>
+
+" DoxygenToolkit
+Bundle 'vim-scripts/DoxygenToolkit.vim'
+let g:load_doxygen_syntax=1
+nmap <SPACE>D :Dox<CR>
+
+" BufExplorer
+Bundle 'jlanzarotta/bufexplorer'
+nmap <silent> <unique> <SPACE>o :BufExplorer<CR>
 
 " Awesome Git plugin
 Bundle 'tpope/vim-fugitive'
