@@ -67,18 +67,24 @@ endif
 "
 " Text formatting
 "
-set fo=tcrqn
-set autoindent							" autoindent
-set smartindent							" smartindent
-set cindent							" c-style indenting
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set nowrap
-set smarttab
+"set fo=tcrqn
+"set autoindent							" autoindent
+"set smartindent							" smartindent
+"set cindent							" c-style indenting
+"set tabstop=4
+"set softtabstop=4
+"set shiftwidth=4
+"set nowrap
+"set smarttab
+set cindent
+set cinoptions=>4,n-2,{2,^-2,:2,=2,g0,h2,p5,t0,+2,(0,u0,w1,m1
+set shiftwidth=2
+set softtabstop=2
+set textwidth=79
+set fo-=ro fo+=cql
 set fileencoding=utf8
 set encoding=utf8
-set gfn=Mono\ 10
+set gfn=Mono\ 8
 
 "
 " Folding
@@ -218,28 +224,14 @@ hi SpellLocal	ctermbg=Red	ctermfg=Black guifg=Blue cterm=underline gui=underline
 map <SPACE>D :Dox<CR>
 let g:load_doxygen_syntax=1
 
-" Cscope finding
-if filereadable("cscope.out")
-  cs add cscope.out
-endif
-
-nmap <Space>s :cs find s <C-R>=expand("<cword>")<CR><CR>
-nmap <Space>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-nmap <Space>c :cs find c <C-R>=expand("<cword>")<CR><CR>
-nmap <Space>t :cs find t <C-R>=expand("<cword>")<CR><CR>
-nmap <Space>e :cs find e <C-R>=expand("<cword>")<CR><CR>
-nmap <Space>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
-nmap <Space>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-nmap <Space>d :cs find d <C-R>=expand("<cword>")<CR><CR>
-
 set nocompatible								" be iMproved
 filetype off									" required!
 
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
 
 " required!: let Vundle manage Vundle
-Bundle 'gmarik/vundle'
+Bundle 'VundleVim/Vundle.vim'
 
 " C/C++/C#/Objective-C/Objective-C++ Completion
 Bundle 'Valloric/YouCompleteMe'
@@ -247,6 +239,8 @@ let g:ycm_key_list_select_completion = ['<Enter>', '<Down>']
 " Remove preview window
 set completeopt-=preview
 let g:ycm_add_preview_to_completeopt=0
+
+nmap <Space>d :YcmCompleter GoTo<CR><CR>
 
 " Awesome Git plugin
 Bundle 'tpope/vim-fugitive'
@@ -275,12 +269,15 @@ Bundle "vim-scripts/groovy.vim"
 
 Bundle "justinmk/vim-syntax-extra"
 
+Bundle 'ekalinin/Dockerfile.vim'
+
 " Notes
 Bundle "xolox/vim-misc"
 Bundle "xolox/vim-notes"
 let g:notes_directories = [ '~/work/notes' ]
 
 Bundle "bling/vim-airline"
+Plugin 'vim-airline/vim-airline-themes'
 set laststatus=2
 " air-line
 let g:airline_powerline_fonts = 1
