@@ -52,13 +52,13 @@ set incsearch							" display matching pattern as typing
 set listchars=tab:\|\ ,trail:.,extends:>,precedes:<,eol:$	" :set list
 set so=5							" keep 10 lines for scope
 set novisualbell						" do not blink
+set t_Co=256
 if has("gui_running")
 	set guioptions-=m					" no menu bar
 	set guioptions-=T					" no toolbar
 	set guioptions-=r					" no right-hand scrollbar
 	set guioptions-=L					" no left-hand scrollbar
 	set hlsearch						" highlight search matches
-	colorscheme molokai					" set colorscheme
 endif
 
 "
@@ -246,6 +246,7 @@ nmap <silent> <unique> <SPACE>o :BufExplorer<CR>
 Bundle 'tomasr/molokai'
 let g:molokai_original = 1
 let g:rehash256 = 1
+colorscheme molokai
 
 " Awesome Git plugin
 Bundle 'tpope/vim-fugitive'
