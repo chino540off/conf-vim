@@ -59,9 +59,6 @@ if has("gui_running")
 	set guioptions-=L					" no left-hand scrollbar
 	set hlsearch						" highlight search matches
 	colorscheme molokai					" set colorscheme
-else								" terminal configuration
-	set t_Co=32						" Use 8 colors
-	colorscheme molokai   					" set colorscheme
 endif
 
 "
@@ -232,22 +229,28 @@ let g:ycm_key_list_select_completion = ['<Enter>', '<Down>']
 " Remove preview window
 set completeopt-=preview
 let g:ycm_add_preview_to_completeopt=0
-
 nmap <Space>d :YcmCompleter GoTo<CR><CR>
+
 
 " DoxygenToolkit
 Bundle 'vim-scripts/DoxygenToolkit.vim'
 let g:load_doxygen_syntax=1
 nmap <SPACE>D :Dox<CR>
 
+
 " BufExplorer
 Bundle 'jlanzarotta/bufexplorer'
 nmap <silent> <unique> <SPACE>o :BufExplorer<CR>
 
+" Molokai theme
+Bundle 'tomasr/molokai'
+let g:molokai_original = 1
+let g:rehash256 = 1
+
 " Awesome Git plugin
 Bundle 'tpope/vim-fugitive'
 
-" Robotframework 
+" Robotframework syntax
 Bundle 'mfukar/robotframework-vim'
 
 " Ardiuno Synthax
@@ -265,12 +268,11 @@ Bundle "scrooloose/syntastic"
 
 " PlantUML syntax
 Bundle "aklt/plantuml-syntax"
-
 " Groovy syntax
 Bundle "vim-scripts/groovy.vim"
-
+" Flex/Bison syntax
 Bundle "justinmk/vim-syntax-extra"
-
+" Dockerfile syntax
 Bundle 'ekalinin/Dockerfile.vim'
 
 " Notes
@@ -301,7 +303,6 @@ let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
-
 let g:airline_theme='molokai'
 
 filetype plugin indent on							" required!
