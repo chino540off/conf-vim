@@ -252,6 +252,11 @@ colorscheme molokai
 " Awesome Git plugin
 Bundle 'tpope/vim-fugitive'
 
+Bundle 'vim-scripts/Conque-GDB'
+let g:ConqueTerm_Color = 2         " 1: strip color after 200 lines, 2: always with color
+let g:ConqueTerm_CloseOnEnd = 1    " close conque when program ends running
+let g:ConqueTerm_StartMessages = 0 " display warning messages if conqueTerm is configured incorrectly
+
 " Robotframework syntax
 Bundle 'mfukar/robotframework-vim'
 
@@ -283,7 +288,7 @@ Bundle "xolox/vim-notes"
 let g:notes_directories = [ '~/work/notes' ]
 
 Bundle "bling/vim-airline"
-Plugin 'vim-airline/vim-airline-themes'
+Bundle 'vim-airline/vim-airline-themes'
 set laststatus=2
 " air-line
 let g:airline_powerline_fonts = 1
