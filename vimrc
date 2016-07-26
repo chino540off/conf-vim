@@ -229,8 +229,9 @@ let g:ycm_key_list_select_completion = ['<Enter>', '<Down>']
 " Remove preview window
 set completeopt-=preview
 let g:ycm_add_preview_to_completeopt=0
-nmap <Space>d :YcmCompleter GoTo<CR><CR>
+let g:ycm_collect_identifiers_from_tags_files=0
 
+nmap <Space>d :YcmCompleter GoTo<CR><CR>
 
 " DoxygenToolkit
 Bundle 'vim-scripts/DoxygenToolkit.vim'
