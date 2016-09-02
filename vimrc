@@ -68,16 +68,16 @@ endif
 "set autoindent							" autoindent
 "set smartindent							" smartindent
 "set cindent							" c-style indenting
-"set tabstop=4
+set tabstop=2
 "set softtabstop=4
-"set shiftwidth=4
+set shiftwidth=2
+set expandtab
 "set nowrap
 "set smarttab
 set cindent
 set cinoptions=>4,n-2,{2,^-2,:2,=2,g0,h2,p5,t0,+2,(0,u0,w1,m1
 set shiftwidth=2
 set softtabstop=2
-set textwidth=79
 set fo-=ro fo+=cql
 set fileencoding=utf8
 set encoding=utf8
