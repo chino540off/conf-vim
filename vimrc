@@ -312,4 +312,11 @@ let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
 let g:airline_theme='molokai'
 
+" rust syntax
+Bundle 'rust-lang/rust.vim'
+
+" extend c++ syntax
+Bundle 'octol/vim-cpp-enhanced-highlight'
+let g:cpp_concepts_highlight = 1
+
 filetype plugin indent on							" required!
