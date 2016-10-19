@@ -319,4 +319,17 @@ Bundle 'rust-lang/rust.vim'
 Bundle 'octol/vim-cpp-enhanced-highlight'
 let g:cpp_concepts_highlight = 1
 
+" cscopes
+Bundle 'brookhong/cscope.vim'
+nnoremap <SPACE>cl :call ToggleLocationList()<CR>
+nnoremap <SPACE>ca :call CscopeFindInteractive(expand('<cword>'))<CR>
+nnoremap <SPACE>cs :call CscopeFind('s', expand('<cword>'))<CR> " s: Find this C symbol
+nnoremap <SPACE>cg :call CscopeFind('g', expand('<cword>'))<CR> " g: Find this definition
+nnoremap <SPACE>cd :call CscopeFind('d', expand('<cword>'))<CR> " d: Find functions called by this function
+nnoremap <SPACE>cc :call CscopeFind('c', expand('<cword>'))<CR> " c: Find functions calling this function
+nnoremap <SPACE>ct :call CscopeFind('t', expand('<cword>'))<CR> " t: Find this text string
+nnoremap <SPACE>ce :call CscopeFind('e', expand('<cword>'))<CR> " e: Find this egrep pattern
+nnoremap <SPACE>cf :call CscopeFind('f', expand('<cword>'))<CR> " f: Find this file
+nnoremap <SPACE>ci :call CscopeFind('i', expand('<cword>'))<CR> " i: Find files #including this file
+
 filetype plugin indent on							" required!
