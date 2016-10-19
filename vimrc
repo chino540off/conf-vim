@@ -68,7 +68,7 @@ endif
 "set autoindent							" autoindent
 "set smartindent							" smartindent
 "set cindent							" c-style indenting
-set tabstop=2
+set tabstop=8
 "set softtabstop=4
 set shiftwidth=2
 set expandtab
